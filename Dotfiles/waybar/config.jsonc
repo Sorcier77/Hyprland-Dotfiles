@@ -1,0 +1,112 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height
+    // Choose the order of the modules
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "pulseaudio#microphone", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock"],
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "months":     "<span color='#d08770'><b>{}</b></span>",
+                "days":       "<span color='#eceff4'><b>{}</b></span>",
+                "weekdays":   "<span color='#ebcb8b'><b>{}</b></span>",
+                "today":      "<span color='#bf616a'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+        },
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C ",
+        "tooltip": false
+
+    },
+    "backlight": {
+        "on-click": "sh ~/.config/scripts/disable-monitor.sh",
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "on-click": "sh ~/.config/scripts/low-power.sh",
+        "format": "{capacity}% {icon} ",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "{capacity}%  ",
+        "tooltip-format": "{power} W | {time}"
+    },
+    "network": {
+        "format-wifi": "{essid} {icon}",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ipaddr} ",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "󰋋",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"],
+        "tooltip": false
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "ignored-sinks": ["Easy Effects Sink"],
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/launcher": {
+        "format": "  ",
+        "on-click": "sh ~/.config/rofi/powermenu/powermenu.sh",
+        "tooltip": false
+    }
+}
