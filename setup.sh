@@ -62,6 +62,7 @@ linkDots() {
         ["${GITPATH}/Dotfiles/rofi/powermenu/style.rasi"]="${USER_HOME}/.config/rofi/powermenu/style.rasi"
         ["${GITPATH}/Dotfiles/waybar/config.jsonc"]="${USER_HOME}/.config/waybar/config.jsonc"
         ["${GITPATH}/Dotfiles/waybar/style.css"]="${USER_HOME}/.config/waybar/style.css"
+        ["${GITPATH}/Dotfiles/gtk-3.0/settings.ini"]="${USER_HOME}/.config/gtk-3.0/settings.ini"        
     )
 
     ## Define the scripts and their destinations
