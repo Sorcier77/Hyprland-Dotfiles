@@ -41,7 +41,7 @@ link_file() {
 
     ## Make symbolic link
     print_message "${YELLOW}" "Linking new config file ${src} to ${dest}"
-    ln -svf "${src}" "${dest}"
+    ln -svf "${src}" "${dest}" &> /dev/null
 }
 
 # Function to link dotfiles and scripts
@@ -51,26 +51,26 @@ linkDots() {
 
     ## Define the dotfiles and their destinations.
     declare -A dotfiles=(
-        [ "${GITPATH}/Dotfiles/hypr/hypridle.conf"]="${USER_HOME}/.config/hypr/hypridle.conf"
-        [ "${GITPATH}/Dotfiles/hypr/hyprland.conf"]="${USER_HOME}/.config/hypr/hyprland.conf"
-        [ "${GITPATH}/Dotfiles/hypr/hyprlock.conf"]="${USER_HOME}/.config/hypr/hyprlock.conf"
-        [ "${GITPATH}/Dotfiles/kitty/kitty.conf"]="${USER_HOME}/.config/kitty/kitty.conf"
-        [ "${GITPATH}/Dotfiles/mako/config"]="${USER_HOME}/.config/mako/config"
-        [ "${GITPATH}/Dotfiles/rofi/launcher/launcher.sh"]="${USER_HOME}/.config/rofi/launcher/launcher.sh"
-        [ "${GITPATH}/Dotfiles/rofi/launcher/style.rasi"]="${USER_HOME}/.config/rofi/launcher/style.rasi"
-        [ "${GITPATH}/Dotfiles/rofi/powermenu/powermenu.sh"]="${USER_HOME}/.config/rofi/powermenu/powermenu.sh"
-        [ "${GITPATH}/Dotfiles/rofi/powermenu/style.rasi"]="${USER_HOME}/.config/rofi/powermenu/style.rasi"
-        [ "${GITPATH}/Dotfiles/waybar/config.jsonc"]="${USER_HOME}/.config/waybar/config.jsonc"
-        [ "${GITPATH}/Dotfiles/waybar/style.css"]="${USER_HOME}/.config/waybar/style.css"
+        ["${GITPATH}/Dotfiles/hypr/hypridle.conf"]="${USER_HOME}/.config/hypr/hypridle.conf"
+        ["${GITPATH}/Dotfiles/hypr/hyprland.conf"]="${USER_HOME}/.config/hypr/hyprland.conf"
+        ["${GITPATH}/Dotfiles/hypr/hyprlock.conf"]="${USER_HOME}/.config/hypr/hyprlock.conf"
+        ["${GITPATH}/Dotfiles/kitty/kitty.conf"]="${USER_HOME}/.config/kitty/kitty.conf"
+        ["${GITPATH}/Dotfiles/mako/config"]="${USER_HOME}/.config/mako/config"
+        ["${GITPATH}/Dotfiles/rofi/launcher/launcher.sh"]="${USER_HOME}/.config/rofi/launcher/launcher.sh"
+        ["${GITPATH}/Dotfiles/rofi/launcher/style.rasi"]="${USER_HOME}/.config/rofi/launcher/style.rasi"
+        ["${GITPATH}/Dotfiles/rofi/powermenu/powermenu.sh"]="${USER_HOME}/.config/rofi/powermenu/powermenu.sh"
+        ["${GITPATH}/Dotfiles/rofi/powermenu/style.rasi"]="${USER_HOME}/.config/rofi/powermenu/style.rasi"
+        ["${GITPATH}/Dotfiles/waybar/config.jsonc"]="${USER_HOME}/.config/waybar/config.jsonc"
+        ["${GITPATH}/Dotfiles/waybar/style.css"]="${USER_HOME}/.config/waybar/style.css"
     )
 
     ## Define the scripts and their destinations
     declare -A scripts=(
-        [ "${GITPATH}/Dotfiles/disable-monitor.sh"]="${USER_HOME}/.config/scripts/disable-monitor.sh"
-        [ "${GITPATH}/Dotfiles/git-obsidian.sh"]="${USER_HOME}/.config/scripts/git-obsidian.sh"
-        [ "${GITPATH}/Dotfiles/low-power.sh"]="${USER_HOME}/.config/scripts/low-power.sh"
-        [ "${GITPATH}/Dotfiles/xp-pen/cycle-colors.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-colors.sh"
-        [ "${GITPATH}/Dotfiles/xp-pen/cycle-workspaces.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-workspaces.sh"
+        ["${GITPATH}/Dotfiles/scripts/disable-monitor.sh"]="${USER_HOME}/.config/scripts/disable-monitor.sh"
+        ["${GITPATH}/Dotfiles/scripts/git-obsidian.sh"]="${USER_HOME}/.config/scripts/git-obsidian.sh"
+        ["${GITPATH}/Dotfiles/scripts/low-power.sh"]="${USER_HOME}/.config/scripts/low-power.sh"
+        ["${GITPATH}/Dotfiles/scripts/xp-pen/cycle-colors.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-colors.sh"
+        ["${GITPATH}/Dotfiles/scripts/xp-pen/cycle-workspaces.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-workspaces.sh"
     )
 
     ## Link dotfiles
