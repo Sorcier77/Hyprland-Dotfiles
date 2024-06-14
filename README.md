@@ -37,6 +37,6 @@ This repository includes the following configuration files:
 ## Installation
 To install these dotfiles, simply run the provided installation script. (As always take a look at the code !)
 ```bash
-chmod +x script.sh
-./install.sh
+chmod +x setup.sh
+./setup.sh
 ```
