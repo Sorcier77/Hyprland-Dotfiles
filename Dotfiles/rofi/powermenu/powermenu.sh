@@ -16,11 +16,11 @@ theme='style'
 
 # Options
 options=(
-    "󰐥" # Shutdown
-    "󰜉" # Reboot
     "󰍁" # Lock
-    "󰤄" # Suspend
     "󰍃" # Logout
+    "󰤄" # Suspend
+    "󰜉" # Reboot
+    "󰐥" # Shutdown
 )
 yes='YES'
 no='NO'
