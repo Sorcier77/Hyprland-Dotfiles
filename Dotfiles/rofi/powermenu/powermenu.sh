@@ -17,8 +17,8 @@ theme='style'
 # Options
 options=(
     "󰍁" # Lock
-    "󰍃" # Logout
     "󰤄" # Suspend
+    "󰍃" # Logout
     "󰜉" # Reboot
     "󰐥" # Shutdown
 )

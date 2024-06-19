@@ -44,6 +44,36 @@ link_file() {
     ln -svf "${src}" "${dest}" &> /dev/null
 }
 
+# Function to detect Nvidia GPU and modify hyprland.conf if necessary
+modify_hyprland_conf_for_nvidia() {
+    local hyprland_conf=$1
+
+    if lspci | grep -i nvidia > /dev/null; then
+        print_message "${GREEN}" "Nvidia GPU detected. Modifying ${hyprland_conf}."
+        
+        cat << EOF >> "${hyprland_conf}"
+# █▄░█ █░█ █ █▀▄ █ ▄▀█
+# █░▀█ ▀▄▀ █ █▄▀ █ █▀█
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = GBM_BACKEND,nvidia-drm
+env = __NV_PRIME_RENDER_OFFLOAD,1
+env = __VK_LAYER_NV_optimus,NVIDIA_only
+env = WLR_DRM_NO_ATOMIC,1
+env = NVD_BACKEND,direct
+env = XDG_SESSION_TYPE,wayland
+cursor {
+    no_hardware_cursors = true
+}
+env = MOZ_DISABLE_RDD_SANDBOX,1
+env = EGL_PLATFORM,wayland
+
+EOF
+    else
+        print_message "${YELLOW}" "No Nvidia GPU detected."
+    fi
+}
+
 # Function to link dotfiles and scripts
 linkDots() {
     ## Get the correct user home directory.
@@ -73,6 +103,9 @@ linkDots() {
         ["${GITPATH}/Dotfiles/scripts/xp-pen/cycle-colors.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-colors.sh"
         ["${GITPATH}/Dotfiles/scripts/xp-pen/cycle-workspaces.sh"]="${USER_HOME}/.config/scripts/xp-pen/cycle-workspaces.sh"
     )
+
+    ## Modify hyprland.conf if Nvidia GPU is detected
+    modify_hyprland_conf_for_nvidia "${dotfiles["${GITPATH}/Dotfiles/hypr/hyprland.conf"]}"
 
     ## Link dotfiles
     for src in "${!dotfiles[@]}"; do
