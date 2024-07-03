@@ -13,7 +13,7 @@ is_gif() {
 
 # Function to enable low power mode
 enable_low_power_mode() {
-    sed -i 's/background-color: @frost_light;/background-color: @aurora_yellow;/g' "$css_file"
+    sed --follow-symlinks -i 's/background-color: @frost_light;/background-color: @aurora_yellow;/g' "$css_file"
     touch "$state_file"
     hyprctl keyword decoration:blur:enabled false
     hyprctl keyword decoration:drop_shadow false
@@ -25,17 +25,17 @@ enable_low_power_mode() {
         swww img "$low_power_wallpaper"
     fi
     notify-send "Low Power Mode Enabled"
-    killall waybar && waybar
+    pkill -SIGUSR2 waybar
 }
 
 # Function to disable low power mode
 disable_low_power_mode() {
-    sed -i 's/background-color: @aurora_yellow;/background-color: @frost_light;/g' "$css_file"
+    sed --follow-symlinks -i 's/background-color: @aurora_yellow;/background-color: @frost_light;/g' "$css_file"
     rm "$state_file"
     hyprctl reload
     swww img "$wallpaper"
     notify-send "Low Power Mode Disabled"
-    killall waybar && waybar
+    pkill -SIGUSR2 waybar
 }
 
 # Main script logic

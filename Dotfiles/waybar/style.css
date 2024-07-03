@@ -88,7 +88,7 @@ tooltip {
   }
 }
 
-#pulseaudio, #network, #cpu, #memory, #temperature, #backlight, #battery, #clock, #tray, #idle_inhibitor {
+#pulseaudio, #network, #cpu, #memory, #temperature, #backlight, #battery, #clock, #tray, #idle_inhibitor, #custom-launcher {
    padding: 0 6px;
    margin: 0 3px;
 }
