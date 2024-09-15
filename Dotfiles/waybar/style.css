@@ -23,17 +23,20 @@
 @define-color frost_darker #5e81ac;
 
 /* Aurora - NORD */
-@define-color aurora_red #bf616a;
+@define-color aurora_red #800000;
+@define-color aurora_red_bar #ff3333;
+@define-color aurora_red_light #e60000;
 @define-color aurora_orange #d08770;
 @define-color aurora_yellow #ebcb8b;
 @define-color aurora_green #a3be8c;
 @define-color aurora_pink #b48ead;
-
+@define-color aurora_grey #767676;
+@define-color aurora_grey_clock #444444;
 
 window#waybar {
   background: @polar_darker;
-  border-bottom: 3px solid @frost_darker;
-  color: @snow_lighter;
+  border-bottom: 3px solid @aurora_red;
+  color: @aurora_grey;
 }
 
 tooltip {
@@ -43,13 +46,13 @@ tooltip {
 #workspaces button {
   padding: 0 5px;
   background: transparent;
-  color: @snow_lighter;
-  border-bottom: 3px solid transparent;
+  color: @aurora_red_light;
+  border-bottom: 3px solid @aurora_red;
 }
 
 #workspaces button.active {
-  background: @frost_dark;
-  border-bottom: 3px solid @frost_dark;
+  background: @aurora_red;
+  border-bottom: 3px solid @aurora_red_light;
 }
 
 #custom-launcher {
@@ -67,23 +70,23 @@ tooltip {
 }
 
 #clock {
-  background-color: @frost_dark;
+  background-color: transparent;
   color: @snow_lighter;
 }
 
 #battery {
-  background-color: @frost_light;
-  color: @background;
+  background-color: transparent;
+  color: @aurora_grey;
 }
 
 #battery.charging {
-  color: @background;
-  background-color: @aurora_green;
+  color: @aurora_green;
+  background-color: transparent;
 }
 
 @keyframes blink {
   to {
-      background-color: @frost_light;
+      background-color: @aurora_red;
       color: @background;
   }
 }
@@ -94,8 +97,8 @@ tooltip {
 }
 
 #battery.warning:not(.charging), #battery.critical:not(.charging) {
-  background: @aurora_red;
-  color: @frost_light;
+  background: transparent;
+  color: @aurora_red_light;
   animation-name: blink;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

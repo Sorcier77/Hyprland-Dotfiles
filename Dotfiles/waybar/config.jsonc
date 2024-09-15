@@ -105,7 +105,7 @@
         "tooltip": false
     },
     "custom/launcher": {
-        "format": "",
+        "format": "",
         "on-click": "sh ~/.config/rofi/powermenu/powermenu.sh",
         "tooltip": false
     }
